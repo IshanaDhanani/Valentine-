@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you wanna go out with me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #message {
+            text-align: center;
+        }
+        #options {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">
+        <h1>Do you wanna go out with me?</h1>
+        <img id="emoji" src="https://emojicdn.elk.sh/😊" alt="cute emoji">
+        <div id="options">
+            <button id="yes" onclick="showExcitedSticker()">Yes</button>
+            <button id="no" onclick="moveAway(event)">No</button>
+        </div>
+    </div>
+
+    <script>
+        function moveAway(event) {
+            event.target.style.position = 'absolute';
+            const x = event.clientX - event.target.offsetWidth / 2;
+            const y = event.clientY - event.target.offsetHeight / 2;
+            event.target.style.left = x + 'px';
+            event.target.style.top = y + 'px';
+        }
+
+        function showExcitedSticker() {
+            const messageDiv = document.getElementById('message');
+            const emojiImg = document.getElementById('emoji');
+            emojiImg.src = 'https://emojicdn.elk.sh/😄';
+            emojiImg.alt = 'excited emoji';
+            messageDiv.innerHTML += '<p>Yay, finally!</p>';
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '<button onclick="fixDate()">Let\'s fix a date</button>';
+        }
+
+        function fixDate() {
+            alert('Let\'s plan a date!');
+        }
+    </script>
+</body>
+</html>
+
